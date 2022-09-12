@@ -1,0 +1,20 @@
+.header {
+  background: #0078d7;
+  height: 4rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+}
+.header h1 {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 2rem;
+  margin: 0 2rem;
+}
+
+.theme {
+  font-size: 1.4rem;
+  margin: 0 2rem;
+}

@@ -1,0 +1,32 @@
+.category-section {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 1rem;
+  height: 34px;
+}
+.category-select,
+.category-input {
+  border: none;
+  border-bottom: 1px solid red;
+  padding: 0.5rem;
+  width: 7rem;
+  margin-left: 2rem;
+  transition: all 0.5s;
+}
+.category-add,
+.category-trash {
+  border: none;
+  margin-left: 1rem;
+  margin-bottom: 0.4rem;
+  background-color: transparent;
+  width: 24px;
+  height: 24px;
+  fill: rgb(207, 77, 77);
+  transition: 0.5s;
+  transform: scale(0.8);
+  backface-visibility: hidden;
+}
+
+.rotate {
+  transform: rotate(45deg) scale(0.8);
+}

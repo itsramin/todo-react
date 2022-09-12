@@ -1,0 +1,31 @@
+.task-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 3rem;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 0.5rem;
+}
+.task-checkbox {
+  margin: 0 1rem;
+}
+.task-summary {
+  display: flex;
+  flex-direction: column;
+}
+.task-title {
+  font-size: 0.9rem;
+  line-height: 0.9rem;
+  font-weight: 400;
+}
+.task-date,
+.task-repeat {
+  color: #999;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+.task-date--red {
+  color: red;
+}

@@ -1,0 +1,33 @@
+.task-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+.task-incompeleted {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.task-compeleted {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.task-compeleted__header {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+.task-compeleted__count {
+  margin-left: 1.5rem;
+  font-weight: 400;
+}

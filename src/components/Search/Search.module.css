@@ -1,0 +1,21 @@
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  border: none;
+  background: #b0e2ff;
+  border-radius: 5px;
+  padding: 0.5rem;
+  padding-left: 2.3rem;
+}
+.search:focus-visible {
+  outline: none;
+}
+.search-icon {
+  margin-left: 0.5rem;
+  fill: #0078d7;
+  position: absolute;
+  transform: scale(0.7);
+}
