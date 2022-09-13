@@ -9,6 +9,7 @@ const defaultTaskState = {
   curCategory: "main",
   allCategory: localAllCategory ? localAllCategory : ["main"],
   allTasks: localAllTasks ? localAllTasks : [],
+  curSort: "creation date",
 };
 
 const taskReducer = (state, action) => {
@@ -21,6 +22,7 @@ const taskReducer = (state, action) => {
       allCategory: state.allCategory,
       searchRes: state.searchRes,
       isSearching: state.isSearching,
+      curSort: state.curSort,
     };
   }
   if (action.type === "CHECK") {
@@ -47,6 +49,7 @@ const taskReducer = (state, action) => {
       searchRes: state.searchRes,
       isSearching: state.isSearching,
       allCategory: state.allCategory,
+      curSort: state.curSort,
     };
   }
   if (action.type === "EDIT") {
@@ -74,6 +77,7 @@ const taskReducer = (state, action) => {
       searchRes: state.searchRes,
       isSearching: state.isSearching,
       allCategory: state.allCategory,
+      curSort: state.curSort,
     };
   }
   if (action.type === "DELL") {
@@ -87,6 +91,7 @@ const taskReducer = (state, action) => {
       searchRes: state.searchRes,
       isSearching: state.isSearching,
       allCategory: state.allCategory,
+      curSort: state.curSort,
     };
   }
   if (action.type === "SEARCH") {
@@ -100,6 +105,7 @@ const taskReducer = (state, action) => {
         isSearching: true,
         curCategory: state.curCategory,
         allCategory: state.allCategory,
+        curSort: state.curSort,
       };
     } else {
       return {
@@ -108,6 +114,7 @@ const taskReducer = (state, action) => {
         isSearching: false,
         curCategory: state.curCategory,
         allCategory: state.allCategory,
+        curSort: state.curSort,
       };
     }
   }
@@ -118,6 +125,7 @@ const taskReducer = (state, action) => {
       isSearching: state.isSearching,
       curCategory: action.value,
       allCategory: state.allCategory,
+      curSort: state.curSort,
     };
   }
   if (action.type === "ADD_CATEGORY") {
@@ -128,6 +136,7 @@ const taskReducer = (state, action) => {
         isSearching: state.isSearching,
         curCategory: state.curCategory,
         allCategory: state.allCategory,
+        curSort: state.curSort,
       };
     } else {
       const updateCats = [...state.allCategory, action.value];
@@ -138,6 +147,7 @@ const taskReducer = (state, action) => {
         isSearching: state.isSearching,
         curCategory: action.value,
         allCategory: updateCats,
+        curSort: state.curSort,
       };
     }
   }
@@ -153,6 +163,17 @@ const taskReducer = (state, action) => {
       isSearching: state.isSearching,
       curCategory: state.curCategory,
       allCategory: updateAllCats,
+      curSort: state.curSort,
+    };
+  }
+  if (action.type === "SORT") {
+    return {
+      allTasks: state.allTasks,
+      searchRes: state.searchRes,
+      isSearching: state.isSearching,
+      curCategory: state.curCategory,
+      allCategory: state.allCategory,
+      curSort: action.value,
     };
   }
   return defaultTaskState;
@@ -184,6 +205,9 @@ const TaskProvider = (props) => {
   const editTaskHandler = (task) => {
     dispatchTask({ type: "EDIT", task: task });
   };
+  const sortHandler = (value) => {
+    dispatchTask({ type: "SORT", value: value });
+  };
 
   const taskValues = {
     allTasks: taskState.allTasks,
@@ -199,6 +223,8 @@ const TaskProvider = (props) => {
     addCategory: addCategoryHandler,
     allCategory: taskState.allCategory,
     delCategory: delCategoryHandler,
+    sort: sortHandler,
+    curSort: taskState.curSort,
   };
   return (
     <TaskCtx.Provider value={taskValues}>{props.children}</TaskCtx.Provider>

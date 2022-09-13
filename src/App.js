@@ -6,6 +6,7 @@ import NewTask from "./components/Tasks/NewTask";
 import TaskDetailBox from "./components/Tasks/TaskDetailBox";
 import TaskList from "./components/Tasks/TaskList";
 import TaskProvider from "./store/TaskProvider";
+import Sort from "./components/Sort/Sort";
 
 function App() {
   const [curId, setCurId] = useState("");
@@ -22,7 +23,11 @@ function App() {
       <Header />
       <main className="main">
         <div className="lists" onClick={closeDetailBoxHandler}>
-          <Category />
+          <div className="row">
+            <Category />
+            <Sort />
+          </div>
+
           <NewTask />
           <TaskList onIdChange={idChangeHandler} />
         </div>

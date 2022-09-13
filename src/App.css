@@ -6,6 +6,13 @@
   flex-direction: row;
   height: calc(100vh - 4rem);
 }
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
 .lists {
   flex: 1;
   display: flex;
@@ -14,7 +21,7 @@
   padding: 2rem 3rem;
 }
 .box {
-  width: 20rem;
+  width: 22rem;
   background-color: #eee;
   padding: 1rem;
 }
