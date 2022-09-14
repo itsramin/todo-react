@@ -139,28 +139,6 @@ const taskReducer = (state, action) => {
     };
   }
   if (action.type === "ADD_CATEGORY") {
-    // if (state.allCategory.some((cat) => cat === action.value)) {
-    //   return {
-    //     allTasks: state.allTasks,
-    //     searchRes: state.searchRes,
-    //     isSearching: state.isSearching,
-    //     curCategory: state.curCategory,
-    //     allCategory: state.allCategory,
-    //     curSort: state.curSort,
-    //   };
-    // } else {
-    //   const updateCats = [...state.allCategory, action.value];
-    //   window.localStorage.setItem("allCategory", JSON.stringify(updateCats));
-    //   return {
-    //     allTasks: state.allTasks,
-    //     searchRes: state.searchRes,
-    //     isSearching: state.isSearching,
-    //     curCategory: action.value,
-    //     allCategory: updateCats,
-    //     curSort: state.curSort,
-    //   };
-    // }
-
     const updateCats = [...state.allCategory, action.value];
     window.localStorage.setItem("allCategory", JSON.stringify(updateCats));
     return {

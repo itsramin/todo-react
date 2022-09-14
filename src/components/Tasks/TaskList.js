@@ -3,11 +3,6 @@ import TaskCtx from "../../store/task-context";
 import TaskItem from "./TaskItem";
 import classes from "./TaskList.module.css";
 const TaskList = (props) => {
-  // const DUMMY_TASKS = [
-  //   { id: 0, title: "book", date: "9/3/2022" },
-  //   { id: 1, title: "phone", date: "9/5/2022" },
-  // ];
-
   const ctx = useContext(TaskCtx);
   const curCat = ctx.curCategory;
   const searchList = ctx.searchRes.filter((task) => task.category === curCat);

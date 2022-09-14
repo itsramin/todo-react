@@ -17,8 +17,6 @@ const TaskDetailBox = (props) => {
 
   const dekTaskHandler = () => {
     props.onError("task2", props.id);
-    // ctx.delete(props.id);
-    // props.onClose();
   };
   const cancelHandler = () => {
     props.onClose();
@@ -30,6 +28,8 @@ const TaskDetailBox = (props) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    if (titleRef.current.value === "") return props.onError("task1");
     ctx.editTask({
       title: titleRef.current.value,
       date: dateRef.current.value,
@@ -218,45 +218,3 @@ const TaskDetailBox = (props) => {
 };
 
 export default TaskDetailBox;
-
-// const initValue = { ...targetTask };
-//   console.log(initValue);
-//   const taskReducer = (state, action) => {
-//     if (action.type === "TITLE") {
-//       const updateTask = { ...state, title: action.value };
-//       return updateTask;
-//     }
-//     return initValue;
-//   };
-
-//   const [taskState, dispatchTask] = useReducer(taskReducer, initValue);
-
-//   const dateHandler = (e) => {
-//     dispatchTask({ type: "DATE", value: e.target.value });
-//   };
-//   const titleHandler = (e) => {
-//     dispatchTask({ type: "TITLE", value: e.target.value });
-//   };
-
-// const [initState, setInitState] = useState({ ...targetTask });
-
-//   useEffect(() => {
-//     setInitState({ ...targetTask });
-//   }, [targetTask]);
-
-//   const taskReducer = (state, action) => {
-//     if (action.type === "TITLE") {
-//       const updateTask = { ...state, title: action.value };
-//       return updateTask;
-//     }
-//     return initState;
-//   };
-
-//   const [taskState, dispatchTask] = useReducer(taskReducer, initState);
-
-//   const dateHandler = (e) => {
-//     dispatchTask({ type: "DATE", value: e.target.value });
-//   };
-//   const titleHandler = (e) => {
-//     dispatchTask({ type: "TITLE", value: e.target.value });
-//   };
