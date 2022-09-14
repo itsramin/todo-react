@@ -5,6 +5,9 @@
   display: flex;
   flex-direction: row;
   height: calc(100vh - 4rem);
+  margin-top: 4rem;
+  position: fixed;
+  width: 100%;
 }
 .row {
   display: flex;
@@ -19,9 +22,11 @@
   flex-direction: column;
   align-items: flex-start;
   padding: 2rem 3rem;
+  overflow-y: scroll;
 }
+
 .box {
-  width: 22rem;
+  width: 20rem;
   background-color: #eee;
   padding: 1rem;
 }

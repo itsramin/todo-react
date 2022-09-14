@@ -5,6 +5,9 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
 }
 .header h1 {
   color: white;

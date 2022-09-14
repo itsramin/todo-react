@@ -82,18 +82,20 @@ const TaskItem = (props) => {
       />
       <div className={classes["task-summary"]}>
         <h3 className={classes["task-title"]}>{props.task.title}</h3>
-        <div>
-          <span
-            className={`${classes["task-date"]} ${
-              age < 0 && classes["task-date--red"]
-            }`}
-          >
-            {shownDate}
-          </span>
-          <span className={classes["task-repeat"]}>
-            {props.task.repeat.amount > 0 ? shownRep : ""}
-          </span>
-        </div>
+        {shownDate && (
+          <div>
+            <span
+              className={`${classes["task-date"]} ${
+                age < 0 && classes["task-date--red"]
+              }`}
+            >
+              {shownDate}
+            </span>
+            <span className={classes["task-repeat"]}>
+              {props.task.repeat.amount > 0 ? shownRep : ""}
+            </span>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -3,30 +3,84 @@
   align-items: flex-end;
   margin-bottom: 1rem;
   height: 34px;
+  padding-left: 2rem;
 }
 .category-select,
 .category-input {
   border: none;
-  border-bottom: 1px solid red;
-  padding: 0.5rem;
-  width: 7rem;
-  margin-left: 2rem;
+  border-bottom: 1px solid #0078d7;
+  padding: 0.5rem 1.6rem 0.5rem 0.5rem;
+  width: 10rem;
   transition: all 0.5s;
+  margin-right: 0.8rem;
+  height: 34px;
 }
-.category-add,
-.category-trash {
-  border: none;
-  margin-left: 1rem;
-  margin-bottom: 0.4rem;
-  background-color: transparent;
+.category-select {
+  cursor: pointer;
+}
+.category-edit,
+.category-new {
+  display: flex;
+  align-items: center;
+}
+.category-icon {
   width: 24px;
   height: 24px;
-  fill: rgb(207, 77, 77);
+  fill: #2b94eb;
+  transform: scale(0.8);
+  cursor: pointer;
+}
+.sublist-item__icon {
+  margin-right: 0.5rem;
+  width: 24px;
+  height: 24px;
+  fill: #999;
   transition: 0.5s;
   transform: scale(0.8);
   backface-visibility: hidden;
+  cursor: pointer;
 }
-
 .rotate {
   transform: rotate(45deg) scale(0.8);
+}
+.category-sublist {
+  top: 60px;
+  list-style: none;
+  flex-direction: column;
+  display: none;
+  color: #777;
+  position: absolute;
+  z-index: 100;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.category-sublist:hover {
+  display: flex;
+}
+.category-icon:hover + .category-sublist {
+  display: flex;
+}
+.sublist-item {
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: #333;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.sublist-item:hover {
+  background-color: #f5f5f5;
+  border-radius: 5px;
+}
+.check-icon {
+  width: 24px;
+  height: 24px;
+  fill: #2b94eb;
+  transition: 0.5s;
+  transform: scale(0.8);
+  cursor: pointer;
+  margin-left: -2rem;
 }

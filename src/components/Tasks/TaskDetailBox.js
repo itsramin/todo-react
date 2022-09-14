@@ -16,8 +16,9 @@ const TaskDetailBox = (props) => {
   const periodRef = useRef(targetTask.repeat.period);
 
   const dekTaskHandler = () => {
-    ctx.delete(props.id);
-    props.onClose();
+    props.onError("task2", props.id);
+    // ctx.delete(props.id);
+    // props.onClose();
   };
   const cancelHandler = () => {
     props.onClose();

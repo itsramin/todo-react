@@ -16,7 +16,7 @@
   display: block;
 }
 .new-task__title::placeholder {
-  color: red;
+  color: #0078d7;
 }
 .new-task__options {
   display: flex;

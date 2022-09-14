@@ -1,7 +1,7 @@
 import classes from "./NewTask.module.css";
 import { useContext, useState } from "react";
 import TaskCtx from "../../store/task-context";
-const NewTask = () => {
+const NewTask = (props) => {
   const [title, setTitle] = useState("");
   const [date, setDate] = useState("");
   const [repAmount, setRepAmount] = useState("");
@@ -79,6 +79,7 @@ const NewTask = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+    if (title === "") return props.onError("task1");
     setTitle("");
     setDate("");
     setRepAmount("");

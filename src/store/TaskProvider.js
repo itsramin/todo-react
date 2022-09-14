@@ -118,6 +118,16 @@ const taskReducer = (state, action) => {
       };
     }
   }
+  if (action.type === "SORT") {
+    return {
+      allTasks: state.allTasks,
+      searchRes: state.searchRes,
+      isSearching: state.isSearching,
+      curCategory: state.curCategory,
+      allCategory: state.allCategory,
+      curSort: action.value,
+    };
+  }
   if (action.type === "CATEGORY") {
     return {
       allTasks: state.allTasks,
@@ -129,53 +139,82 @@ const taskReducer = (state, action) => {
     };
   }
   if (action.type === "ADD_CATEGORY") {
-    if (state.allCategory.some((cat) => cat === action.value)) {
-      return {
-        allTasks: state.allTasks,
-        searchRes: state.searchRes,
-        isSearching: state.isSearching,
-        curCategory: state.curCategory,
-        allCategory: state.allCategory,
-        curSort: state.curSort,
-      };
-    } else {
-      const updateCats = [...state.allCategory, action.value];
-      window.localStorage.setItem("allCategory", JSON.stringify(updateCats));
-      return {
-        allTasks: state.allTasks,
-        searchRes: state.searchRes,
-        isSearching: state.isSearching,
-        curCategory: action.value,
-        allCategory: updateCats,
-        curSort: state.curSort,
-      };
-    }
-  }
-  if (action.type === "DELL_CATEGORY") {
-    const index = state.allCategory.findIndex((cat) => cat === action.value);
+    // if (state.allCategory.some((cat) => cat === action.value)) {
+    //   return {
+    //     allTasks: state.allTasks,
+    //     searchRes: state.searchRes,
+    //     isSearching: state.isSearching,
+    //     curCategory: state.curCategory,
+    //     allCategory: state.allCategory,
+    //     curSort: state.curSort,
+    //   };
+    // } else {
+    //   const updateCats = [...state.allCategory, action.value];
+    //   window.localStorage.setItem("allCategory", JSON.stringify(updateCats));
+    //   return {
+    //     allTasks: state.allTasks,
+    //     searchRes: state.searchRes,
+    //     isSearching: state.isSearching,
+    //     curCategory: action.value,
+    //     allCategory: updateCats,
+    //     curSort: state.curSort,
+    //   };
+    // }
 
-    const updateAllCats = [...state.allCategory];
-    updateAllCats.splice(index, 1);
-    window.localStorage.setItem("allCategory", JSON.stringify(updateAllCats));
+    const updateCats = [...state.allCategory, action.value];
+    window.localStorage.setItem("allCategory", JSON.stringify(updateCats));
     return {
       allTasks: state.allTasks,
       searchRes: state.searchRes,
       isSearching: state.isSearching,
-      curCategory: state.curCategory,
+      curCategory: action.value,
+      allCategory: updateCats,
+      curSort: state.curSort,
+    };
+  }
+  if (action.type === "DELL_CATEGORY") {
+    const index = state.allCategory.findIndex((cat) => cat === action.value);
+    const updateAllCats = [...state.allCategory];
+    updateAllCats.splice(index, 1);
+    window.localStorage.setItem("allCategory", JSON.stringify(updateAllCats));
+
+    const updateTasks = [...state.allTasks];
+    updateTasks.map((task) => {
+      if (task.category === action.value) task.category = "main";
+    });
+    window.localStorage.setItem("allTasks", JSON.stringify(updateTasks));
+    return {
+      allTasks: updateTasks,
+      searchRes: state.searchRes,
+      isSearching: state.isSearching,
+      curCategory: "main",
       allCategory: updateAllCats,
       curSort: state.curSort,
     };
   }
-  if (action.type === "SORT") {
+  if (action.type === "EDIT_CATEGORY") {
+    const index = state.allCategory.findIndex(
+      (cat) => cat === state.curCategory
+    );
+    const updateAllCats = [...state.allCategory];
+    updateAllCats[index] = action.value;
+    window.localStorage.setItem("allCategory", JSON.stringify(updateAllCats));
+
+    const updateTasks = [...state.allTasks];
+    updateTasks.map((task) => {
+      if (task.category === state.curCategory) task.category = action.value;
+    });
+    window.localStorage.setItem("allTasks", JSON.stringify(updateTasks));
     return {
-      allTasks: state.allTasks,
+      allTasks: updateTasks,
       searchRes: state.searchRes,
       isSearching: state.isSearching,
-      curCategory: state.curCategory,
-      allCategory: state.allCategory,
-      curSort: action.value,
+      curCategory: action.value,
+      allCategory: updateAllCats,
+      curSort: state.curSort,
     };
   }
+
   return defaultTaskState;
 };
 
@@ -208,6 +247,9 @@ const TaskProvider = (props) => {
   const sortHandler = (value) => {
     dispatchTask({ type: "SORT", value: value });
   };
+  const editCatHandler = (value) => {
+    dispatchTask({ type: "EDIT_CATEGORY", value: value });
+  };
 
   const taskValues = {
     allTasks: taskState.allTasks,
@@ -225,6 +267,7 @@ const TaskProvider = (props) => {
     delCategory: delCategoryHandler,
     sort: sortHandler,
     curSort: taskState.curSort,
+    editCategory: editCatHandler,
   };
   return (
     <TaskCtx.Provider value={taskValues}>{props.children}</TaskCtx.Provider>
