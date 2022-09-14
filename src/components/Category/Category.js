@@ -193,18 +193,19 @@ const Category = (props) => {
           <path d="m12 16.495c1.242 0 2.25 1.008 2.25 2.25s-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25 1.008-2.25 2.25-2.25zm0-6.75c1.242 0 2.25 1.008 2.25 2.25s-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25 1.008-2.25 2.25-2.25zm0-6.75c1.242 0 2.25 1.008 2.25 2.25s-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25 1.008-2.25 2.25-2.25z" />
         </svg>
         <ul className={classes["category-sublist"]}>
+          <h4 className={classes["sublist-header"]}>Category</h4>
           <li className={classes["sublist-item"]} onClick={addCatHandler}>
-            {plusIcon} Add new category
+            {plusIcon} Add new
           </li>
           <li
             className={classes["sublist-item"]}
             onClick={renameCatHandler}
             disabled={true}
           >
-            {renameIcon} Rename category
+            {renameIcon} Rename
           </li>
           <li className={classes["sublist-item"]} onClick={delCatHandler}>
-            {trashIcon} Delete category
+            {trashIcon} Delete
           </li>
         </ul>
       </div>

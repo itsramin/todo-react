@@ -132,3 +132,8 @@
   cursor: pointer;
   background-color: #f8f8f8;
 }
+@media screen and (max-width: 500px) {
+  .new-task__options {
+    padding: 0.5rem 1rem;
+  }
+}

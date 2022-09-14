@@ -1,14 +1,17 @@
 .search-box {
   display: flex;
   align-items: center;
+  max-width: 20rem;
 }
 
 .search-input {
   border: none;
-  background: #d0edff;
+  background: rgba(255, 255, 255, 0.7);
   border-radius: 5px;
   padding: 0.5rem;
   padding-left: 2.3rem;
+  /* max-width: 10rem; */
+  width: 100%;
 }
 .search:focus-visible {
   outline: none;
@@ -18,4 +21,9 @@
   fill: #0078d7;
   position: absolute;
   transform: scale(0.7);
+}
+@media screen and (max-width: 500px) {
+  .search-box {
+    max-width: 10rem;
+  }
 }

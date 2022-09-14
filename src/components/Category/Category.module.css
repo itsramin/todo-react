@@ -52,7 +52,8 @@
   position: absolute;
   z-index: 100;
   background-color: white;
-  padding: 1rem;
+  width: 10rem;
+  padding: 1rem 1rem 0.6rem 1rem;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .category-sublist:hover {
@@ -83,4 +84,20 @@
   transform: scale(0.8);
   cursor: pointer;
   margin-left: -2rem;
+}
+.sublist-header {
+  font-size: 0.8rem;
+  padding: 0 0.5rem 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid #999;
+}
+@media screen and (max-width: 900px) {
+  .category-section {
+    padding-left: 0rem;
+  }
+}
+@media screen and (max-width: 500px) {
+  .category-sublist {
+    right: 15px;
+  }
 }
