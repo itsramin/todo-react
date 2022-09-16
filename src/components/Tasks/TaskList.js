@@ -8,11 +8,11 @@ const TaskList = (props) => {
   const searchList = ctx.searchRes.filter((task) => task.category === curCat);
   const taskList = ctx.allTasks.filter((task) => task.category === curCat);
 
-  const unCompeleteList = ctx.isSearching
+  let unCompeleteList = ctx.isSearching
     ? searchList.filter((task) => task.status === false)
     : taskList.filter((task) => task.status === false);
 
-  const compeleteList = ctx.isSearching
+  let compeleteList = ctx.isSearching
     ? searchList.filter((task) => task.status === true)
     : taskList.filter((task) => task.status === true);
 

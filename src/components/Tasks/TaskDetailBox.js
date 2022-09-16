@@ -194,6 +194,11 @@ const TaskDetailBox = (props) => {
           </div>
         </div>
       )}
+      <div className={classes["new-task__section"]}>
+        <div className={classes["creation-date"]}>
+          created on {targetTask.creationDate.slice(0, 10)}
+        </div>
+      </div>
       <div className={classes["new-task__buttons"]}>
         <button type="submit" className={classes["new-task--add"]}>
           Save
