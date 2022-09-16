@@ -42,6 +42,7 @@
   padding: 0.5rem 0.7rem;
   cursor: pointer;
   background-color: #0078d7;
+  user-select: none;
 }
 .new-task--dell {
   background-color: rgb(209, 50, 50);

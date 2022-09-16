@@ -7,6 +7,7 @@
 }
 .category-select,
 .category-input {
+  background-color: #f3f2f1;
   border: none;
   border-bottom: 1px solid #0078d7;
   padding: 0.5rem 1.6rem 0.5rem 0.5rem;
@@ -90,6 +91,7 @@
   padding: 0 0.5rem 0.5rem;
   margin-bottom: 0.5rem;
   border-bottom: 1px solid #999;
+  user-select: none;
 }
 @media screen and (max-width: 900px) {
   .category-section {

@@ -4,8 +4,7 @@ import { useReducer } from "react";
 const localAllTasks = JSON.parse(window.localStorage.getItem("allTasks"));
 const localAllCategory = JSON.parse(window.localStorage.getItem("allCategory"));
 const defaultTaskState = {
-  searchRes: [],
-  isSearching: false,
+  searchWord: "",
   curCategory: "main",
   allCategory: localAllCategory ? localAllCategory : ["main"],
   allTasks: localAllTasks ? localAllTasks : [],
@@ -20,8 +19,7 @@ const taskReducer = (state, action) => {
       allTasks: updateTasks,
       curCategory: state.curCategory,
       allCategory: state.allCategory,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       curSort: state.curSort,
     };
   }
@@ -46,8 +44,7 @@ const taskReducer = (state, action) => {
     return {
       allTasks: updateTasks,
       curCategory: state.curCategory,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       allCategory: state.allCategory,
       curSort: state.curSort,
     };
@@ -74,8 +71,7 @@ const taskReducer = (state, action) => {
     return {
       allTasks: updateTasks,
       curCategory: state.curCategory,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       allCategory: state.allCategory,
       curSort: state.curSort,
     };
@@ -88,41 +84,24 @@ const taskReducer = (state, action) => {
     return {
       allTasks: updateTasks,
       curCategory: state.curCategory,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       allCategory: state.allCategory,
       curSort: state.curSort,
     };
   }
   if (action.type === "SEARCH") {
-    if (action.value !== "") {
-      const updateSearchRes = state.allTasks.filter((task) =>
-        task.title.includes(action.value)
-      );
-      return {
-        allTasks: state.allTasks,
-        searchRes: updateSearchRes,
-        isSearching: true,
-        curCategory: state.curCategory,
-        allCategory: state.allCategory,
-        curSort: state.curSort,
-      };
-    } else {
-      return {
-        allTasks: state.allTasks,
-        searchRes: [],
-        isSearching: false,
-        curCategory: state.curCategory,
-        allCategory: state.allCategory,
-        curSort: state.curSort,
-      };
-    }
+    return {
+      allTasks: state.allTasks,
+      searchWord: action.value,
+      curCategory: state.curCategory,
+      allCategory: state.allCategory,
+      curSort: state.curSort,
+    };
   }
   if (action.type === "SORT") {
     return {
       allTasks: state.allTasks,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       curCategory: state.curCategory,
       allCategory: state.allCategory,
       curSort: action.value,
@@ -131,11 +110,10 @@ const taskReducer = (state, action) => {
   if (action.type === "CATEGORY") {
     return {
       allTasks: state.allTasks,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       curCategory: action.value,
       allCategory: state.allCategory,
-      curSort: state.curSort,
+      curSort: "due date",
     };
   }
   if (action.type === "ADD_CATEGORY") {
@@ -143,8 +121,7 @@ const taskReducer = (state, action) => {
     window.localStorage.setItem("allCategory", JSON.stringify(updateCats));
     return {
       allTasks: state.allTasks,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       curCategory: action.value,
       allCategory: updateCats,
       curSort: state.curSort,
@@ -157,14 +134,14 @@ const taskReducer = (state, action) => {
     window.localStorage.setItem("allCategory", JSON.stringify(updateAllCats));
 
     const updateTasks = [...state.allTasks];
-    updateTasks.map((task) => {
+    updateTasks.forEach((task) => {
       if (task.category === action.value) task.category = "main";
     });
+
     window.localStorage.setItem("allTasks", JSON.stringify(updateTasks));
     return {
       allTasks: updateTasks,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       curCategory: "main",
       allCategory: updateAllCats,
       curSort: state.curSort,
@@ -179,20 +156,20 @@ const taskReducer = (state, action) => {
     window.localStorage.setItem("allCategory", JSON.stringify(updateAllCats));
 
     const updateTasks = [...state.allTasks];
-    updateTasks.map((task) => {
+
+    updateTasks.forEach((task) => {
       if (task.category === state.curCategory) task.category = action.value;
     });
+
     window.localStorage.setItem("allTasks", JSON.stringify(updateTasks));
     return {
       allTasks: updateTasks,
-      searchRes: state.searchRes,
-      isSearching: state.isSearching,
+      searchWord: state.searchWord,
       curCategory: action.value,
       allCategory: updateAllCats,
       curSort: state.curSort,
     };
   }
-
   return defaultTaskState;
 };
 
@@ -231,13 +208,12 @@ const TaskProvider = (props) => {
 
   const taskValues = {
     allTasks: taskState.allTasks,
-    searchRes: taskState.searchRes,
     addTask: addTaskHandler,
     check: checkHandler,
     editTask: editTaskHandler,
     delete: deleteHandler,
     search: searchHandler,
-    isSearching: taskState.isSearching,
+    searchWord: taskState.searchWord,
     category: categoryHandler,
     curCategory: taskState.curCategory,
     addCategory: addCategoryHandler,

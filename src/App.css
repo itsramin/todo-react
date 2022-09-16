@@ -8,6 +8,7 @@
   margin-top: 4rem;
   position: fixed;
   width: 100%;
+  background-color: #f3f2f1;
 }
 .row {
   display: flex;
@@ -27,7 +28,7 @@
 
 .box {
   width: 20rem;
-  background-color: #eee;
+  background-color: #d8d8d8;
   padding: 1rem;
 }
 

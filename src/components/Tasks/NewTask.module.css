@@ -4,9 +4,11 @@
   align-items: center;
   width: 100%;
   background-color: white;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
   margin: 1rem auto;
   position: relative;
+  border-radius: 4px;
+  /* overflow: hidden; */
 }
 .new-task__title {
   height: 3rem;
@@ -14,6 +16,7 @@
   padding: 1rem 2rem;
   width: 100%;
   display: block;
+  border-radius: 4px;
 }
 .new-task__title::placeholder {
   color: #0078d7;
@@ -27,6 +30,7 @@
   width: 100%;
   padding: 0.5rem 2rem;
   transition: 0.5s;
+  border-radius: 4px;
 }
 .new-task__options-left {
   display: flex;
