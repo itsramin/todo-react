@@ -6,7 +6,6 @@ const TaskDetailBox = (props) => {
   const ctx = useContext(TaskCtx);
   const taskIndex = ctx.allTasks.findIndex((task) => task.id === props.id);
   const targetTask = ctx.allTasks[taskIndex];
-  console.log(targetTask);
 
   const titleRef = useRef(targetTask.title);
   const dateRef = useRef();
