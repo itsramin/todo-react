@@ -6,6 +6,7 @@ const TaskDetailBox = (props) => {
   const ctx = useContext(TaskCtx);
   const taskIndex = ctx.allTasks.findIndex((task) => task.id === props.id);
   const targetTask = ctx.allTasks[taskIndex];
+  console.log(targetTask);
 
   const titleRef = useRef(targetTask.title);
   const dateRef = useRef();
@@ -196,7 +197,7 @@ const TaskDetailBox = (props) => {
       )}
       <div className={classes["new-task__section"]}>
         <div className={classes["creation-date"]}>
-          created on {targetTask.creationDate.slice(0, 10)}
+          created on {targetTask.creationDate}
         </div>
       </div>
       <div className={classes["new-task__buttons"]}>

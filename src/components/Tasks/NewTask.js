@@ -98,7 +98,7 @@ const NewTask = (props) => {
       description: "",
       completionDate: "",
       repeat: { amount: repAmount, period: repPeriod },
-      creationDate: new Date(),
+      creationDate: new Date().toISOString().slice(0, 10),
     });
   };
 
