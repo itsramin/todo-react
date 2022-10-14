@@ -42,7 +42,6 @@
   .main {
     flex-direction: column-reverse;
     position: absolute;
-    height: auto;
   }
   .box {
     width: 100%;
