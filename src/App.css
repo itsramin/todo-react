@@ -45,6 +45,8 @@
   }
   .box {
     width: 100%;
+    height: calc(100vh - 4rem);
+    position: absolute;
   }
   .lists {
     overflow-y: hidden;

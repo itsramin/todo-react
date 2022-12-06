@@ -11,6 +11,10 @@
 .new-task__form * {
   font-family: Arial, Helvetica, sans-serif;
 }
+.new-task__form select,
+.new-task__form input {
+  background-color: transparent;
+}
 .new-task__title {
   border: none;
   width: 100%;
@@ -75,6 +79,7 @@
   border: none;
   height: 5rem;
   color: #0078d7;
+  width: 100%;
 }
 
 .new-task__category {
