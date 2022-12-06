@@ -49,6 +49,7 @@ const Category = (props) => {
     if (ctx.allCategory.some((cat) => cat === newCat))
       return props.onError("cat1");
     ctx.addCategory(newCat);
+    ctx.category(newCat);
     setIsAdding(false);
     setNewCat("");
   };
