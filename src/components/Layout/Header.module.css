@@ -18,17 +18,7 @@
   user-select: none;
 }
 
-.theme-icon {
-  transform: scale(0.8);
-  fill: white;
-  opacity: 0.8;
-  cursor: pointer;
-  margin: 0 2rem;
-}
 @media screen and (max-width: 500px) {
-  .theme-icon {
-    margin: 0 1rem;
-  }
   .header h1 {
     margin: 0 1rem;
     font-size: 1.1rem;

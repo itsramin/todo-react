@@ -8,7 +8,7 @@ const Search = () => {
   };
 
   const [isVisible, setIsVisible] = useState(false);
-  const SearchBoxClass = `${classes["search-input"]} ${
+  const searchInputClass = `${classes["search-input"]} ${
     isVisible ? "" : classes["hide"]
   }`;
   const SearchIconClass = `${classes["search-icon"]} ${
@@ -32,7 +32,7 @@ const Search = () => {
       </svg>
       <input
         type="search"
-        className={SearchBoxClass}
+        className={searchInputClass}
         onChange={searchHandler}
       ></input>
     </div>

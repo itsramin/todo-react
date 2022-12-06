@@ -163,13 +163,11 @@ const Category = (props) => {
       </div>
     </form>
   );
-  let shownSection;
+  let content = selectCategory;
   if (isAdding) {
-    shownSection = newCategory;
+    content = newCategory;
   } else if (isEditing) {
-    shownSection = editCategory;
-  } else {
-    shownSection = selectCategory;
+    content = editCategory;
   }
 
   // const addButtonClass = `${classes["sublist-item"]} ${
@@ -178,7 +176,7 @@ const Category = (props) => {
 
   return (
     <div className={classes["category-section"]}>
-      {shownSection}
+      {content}
 
       <div className={classes["category-options"]}>
         <svg
